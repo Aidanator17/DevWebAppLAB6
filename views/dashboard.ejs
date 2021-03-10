@@ -1,0 +1,25 @@
+<h1 class="mt-4">Dashboard</h1>
+<p class="lead mb-3">Welcome <%= user.name %><br>
+        <% 
+        let admins = [];
+        let noad = 'No admins currently online'
+        let ad = 'Admins currently online:'
+        let dash = '- '
+        for (i in sessions){
+            for (a in database){
+                if (database[a]['id'] == sessions[i]['passport']['user']){
+                    if (database[a]['role'] == 'admin'){
+                    admins.push(database[a]['name'])}
+                }
+            }
+        };
+        if (admins.length == 0){ %>
+            <%= noad %>
+        <%} else{
+                %><%= ad %><br><%
+                for (b in admins){
+                    %><%= dash %><%= admins[b] %><br><%
+                }}
+        %>
+</p>
+<a href="/auth/logout" class="btn btn-secondary">Logout</a>

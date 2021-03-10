@@ -1,0 +1,14 @@
+<h1 class="mt-4">Dashboard</h1>
+<p class="lead mb-3">Welcome <%= user.name %> (ID# <%= user.id %>)</p>
+<a href="/auth/logout" class="btn btn-secondary">Logout</a>
+<p><br>Current active sessions:</p>
+<% console.log(sessions);for (i in sessions){ %>
+    <p>SessionID: <%= i %><br>
+        UserID: <%= sessions[i]['passport']['user'] %><br>
+        Name: <% for (a in database){ if (database[a]['id'] == sessions[i]['passport']['user']){ %> <%= database[a]['name'] %> <% }} %><br>
+        Role: <% for (a in database){ if (database[a]['id'] == sessions[i]['passport']['user']){ if (database[a]['role'] == 'user'){ %> <span style="color: green"><%= database[a]['role'] %></span> <% }else{  %><span style="color: blue"><%= database[a]['role'] %></span><%}}} %>
+        <% let link = 'http://localhost:8000/revoke?sid='+i%>
+        <br>
+        <a href="<%= link %>" class="btn btn-primary" role="button">Revoke Session</a>
+    </p><br>
+<%}%>
