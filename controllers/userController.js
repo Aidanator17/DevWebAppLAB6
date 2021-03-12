@@ -22,52 +22,52 @@ function isUserValid(user, password) {
 }
 
 const getUserByGithubIdOrCreate = (profile) => {
-  let user = userModel.GITfindById(profile['id']);
+  let user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
   }
 
-  let createdUser = userModel.createUserWithGithubId(profile['id'],profile['displayName'],'Github');
-  user = userModel.GITfindById(profile['id']);
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],'Github');
+  user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
   }
 }
 
 const getUserByTwitchIdOrCreate = (profile) => {
-  let user = userModel.GITfindById(profile['id']);
+  let user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
   }
 
-  let createdUser = userModel.createUserWithGithubId(profile['id'],profile['display_name'],'Twitch');
-  user = userModel.GITfindById(profile['id']);
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['display_name'],'Twitch');
+  user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
   }
 }
 
 const getUserByImgurIdOrCreate = (profile) => {
-  let user = userModel.GITfindById(profile['id']);
+  let user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
   }
 
-  let createdUser = userModel.createUserWithGithubId(profile['id'],profile['url'],'Imgur');
-  user = userModel.GITfindById(profile['id']);
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['url'],'Imgur');
+  user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
   }
 }
 
 const getUserByRedditIdOrCreate = (profile) => {
-  let user = userModel.GITfindById(profile['id']);
+  let user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
   }
 
-  let createdUser = userModel.createUserWithGithubId(profile['id'],profile['name'],'Reddit');
-  user = userModel.GITfindById(profile['id']);
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['name'],'Reddit');
+  user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
   }

@@ -48,13 +48,13 @@ const userModel = {
     }
     throw new Error(`Couldn't find user with id: ${id}`);
   },
-  GITfindById: (id) => {
+  OUTSIDEfindById: (id) => {
     const user = database.find((user) => user.id === id);
     if (user) {
       return user;
     }
   },
-  createUserWithGithubId: (u_id,u_name,u_method) => {
+  createUserWithOutsideId: (u_id,u_name,u_method) => {
     database.push(
       {
         id:u_id,
