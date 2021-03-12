@@ -6,6 +6,8 @@ const TwitchStrategy = require("passport-twitch-new").Strategy;
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 const InstagramStrategy = require('passport-instagram').Strategy;
 const SlackStrategy = require('passport-slack').Strategy;
+const ImgurStrategy = require('passport-imgur').Strategy;
+const RedditStrategy = require('passport-reddit').Strategy;
 const userController = require("../controllers/userController");
 const userModel = require("../models/userModel").userModel;
 const localLogin = new LocalStrategy(
@@ -59,15 +61,32 @@ function(token, tokenSecret, profile, cb) {
 }
 );
 
-const SlackLogin = new SlackStrategy({
-  clientID: '1865359010288.1838448905509',
-  clientSecret: '896005c8c12a382a297739af1d9bfc6a'
-}, function(token, tokenSecret, profile, cb) {
-  console.log('!!!!!!!!',profile)
-  let user = userController.getUserByTwitchIdOrCreate(profile)
-  return cb(null, user);
+const ImgurLogin = new ImgurStrategy({
+  clientID: 'd8a75d599407d81',
+  clientSecret: '107495130112ee2f4995aa180fd464b9011289ff',
+  callbackURL: "http://localhost:8000/auth/imgur/callback"
+},
+function(accessToken, refreshToken, profile, done) {
+  let user = userController.getUserByImgurIdOrCreate(profile)
+  return done(null, user);
 }
 );
+
+const RedditLogin = new RedditStrategy({
+  clientID: 'Ym8x5Lg8tVfafw',
+  clientSecret: 'OzfgVzTfv2QsCVVuNnPo1wV-QDGmgQ',
+  callbackURL: "http://localhost:8000/auth/reddit/callback"
+},
+function(accessToken, refreshToken, profile, done) {
+  console.log('!!!!!!',profile)
+  let user = userController.getUserByRedditIdOrCreate(profile)
+  return done(null, user);
+}
+);
+
+
+
+
 
 
 //NOT PROPERLY IMPLEMENTED 
@@ -104,4 +123,16 @@ function(token, tokenSecret, profile, cb) {
   return cb(null, user);
 }
 );
-module.exports = passport.use(GithubLogin),passport.use(localLogin),passport.use(TwitterLogin),passport.use(TwitchLogin),passport.use(LinkedInLogin),passport.use(InstagramLogin),passport.use(SlackLogin); //Facebook, Google, Imgur, Reddit, Slack, Spotify, Steam
+
+const SlackLogin = new SlackStrategy({
+  clientID: '1865359010288.1838448905509',
+  clientSecret: '896005c8c12a382a297739af1d9bfc6a',
+  callbackURL: 'https://localhost:8000/auth/slack/callback',
+  scope: ['users.profile:read']
+}, function(token, tokenSecret, profile, cb) {
+  console.log('!!!!!!!!',profile)
+  let user = userController.getUserByTwitchIdOrCreate(profile)
+  return cb(null, user);
+}
+);
+module.exports = passport.use(GithubLogin),passport.use(localLogin),passport.use(TwitterLogin),passport.use(TwitchLogin),passport.use(LinkedInLogin),passport.use(InstagramLogin),passport.use(SlackLogin),passport.use(ImgurLogin),passport.use(RedditLogin); //Facebook, Google, Reddit, Spotify, Steam

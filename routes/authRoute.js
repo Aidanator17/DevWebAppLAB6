@@ -66,7 +66,7 @@ router.get("/twitch/callback",
 
 //SLACK
 router.get("/slack", forwardAuthenticated,
- (req, res) => res.redirect("https://slack.com/oauth/v2/authorize?scope=users.profile:read&client_id=1865359010288.1838448905509&redirect_uri=http://localhost:8000/auth/slack/callback"));
+ (req, res) => res.redirect("https://slack.com/oauth/v2/authorize?user_scope=users.profile:read&client_id=1865359010288.1838448905509"));
 
 router.get('/slack', passport.authorize('slack'));
 
@@ -75,7 +75,19 @@ router.get('/slack/callback',
   (req, res) => res.redirect('/dashboard')
 );
 
+//IMGUR
+router.get('/imgur', forwardAuthenticated,
+ (req,res) => res.redirect("https://api.imgur.com/oauth2/authorize?client_id=d8a75d599407d81&response_type=token&state="))
 
+router.get('/imgur',
+  passport.authenticate('imgur'));
+
+router.get('/imgur/callback', 
+  passport.authenticate('imgur', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/dashboard');
+  });
 
 //LinkedIn
 
@@ -92,5 +104,18 @@ router.get('/linkedin/callback', passport.authenticate('linkedin', {
   failureRedirect: '/auth/login'
 }));
 
+//REDDIT
+router.get('/reddit', forwardAuthenticated,
+ (req,res) => res.redirect("https://www.reddit.com/api/v1/authorize?client_id=Ym8x5Lg8tVfafw&response_type=code&state=stated&redirect_uri=http://localhost:8000/auth/reddit/callback&duration=permanent&scope=identity"))
+
+router.get('/reddit',
+  passport.authenticate('reddit'));
+
+router.get('/reddit/callback',
+  passport.authenticate('reddit', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/dashboard');
+  });
 
 module.exports = router;

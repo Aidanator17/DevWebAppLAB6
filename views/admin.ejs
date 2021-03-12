@@ -9,6 +9,7 @@
         Role: <% for (a in database){ if (database[a]['id'] == sessions[i]['passport']['user']){ if (database[a]['role'] == 'user'){ %> <span style="color: green"><%= database[a]['role'] %></span> <% }else{  %><span style="color: blue"><%= database[a]['role'] %></span><%}}} %>
         <% let link = 'http://localhost:8000/revoke?sid='+i%>
         <br>
+        LoginMethod: <% for (a in database){ if (database[a]['id'] == sessions[i]['passport']['user']){ %> <%= database[a]['method'] %> <% }} %><br>
         <a href="<%= link %>" class="btn btn-primary" role="button">Revoke Session</a>
     </p><br>
 <%}%>

@@ -27,7 +27,7 @@ const getUserByGithubIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithGithubId(profile['id'],profile['displayName']);
+  let createdUser = userModel.createUserWithGithubId(profile['id'],profile['displayName'],'Github');
   user = userModel.GITfindById(profile['id']);
   if (user) {
     return user;
@@ -40,7 +40,33 @@ const getUserByTwitchIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithGithubId(profile['id'],profile['display_name']);
+  let createdUser = userModel.createUserWithGithubId(profile['id'],profile['display_name'],'Twitch');
+  user = userModel.GITfindById(profile['id']);
+  if (user) {
+    return user;
+  }
+}
+
+const getUserByImgurIdOrCreate = (profile) => {
+  let user = userModel.GITfindById(profile['id']);
+  if (user) {
+    return user;
+  }
+
+  let createdUser = userModel.createUserWithGithubId(profile['id'],profile['url'],'Imgur');
+  user = userModel.GITfindById(profile['id']);
+  if (user) {
+    return user;
+  }
+}
+
+const getUserByRedditIdOrCreate = (profile) => {
+  let user = userModel.GITfindById(profile['id']);
+  if (user) {
+    return user;
+  }
+
+  let createdUser = userModel.createUserWithGithubId(profile['id'],profile['name'],'Reddit');
   user = userModel.GITfindById(profile['id']);
   if (user) {
     return user;
@@ -51,5 +77,7 @@ module.exports = {
   getUserByEmailIdAndPassword,
   getUserById,
   getUserByGithubIdOrCreate,
-  getUserByTwitchIdOrCreate
+  getUserByTwitchIdOrCreate,
+  getUserByImgurIdOrCreate,
+  getUserByRedditIdOrCreate
 };

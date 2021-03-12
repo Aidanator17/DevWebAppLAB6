@@ -4,28 +4,32 @@ const database = [
     name: "Jimmy Smith",
     email: "jimmy123@gmail.com",
     password: "jimmy123!",
-    role:'user'
+    role:'user',
+    method: 'local'
   },
   {
     id: 2,
     name: "Johnny Doe",
     email: "johnny123@gmail.com",
     password: "johnny123!",
-    role:'user'
+    role:'user',
+    method: 'local'
   },
   {
     id: 3,
     name: "Jonathan Chen",
     email: "jonathan123@gmail.com",
     password: "jonathan123!",
-    role:'admin'
+    role:'admin',
+    method: 'local'
   },
   {
     id: 4,
     name: "Aidan Christopher",
     email: "aidan.r.christopher@gmail.com",
     password: "acit2520",
-    role:'admin'
+    role:'admin',
+    method: 'local'
   },
 ];
 
@@ -50,14 +54,15 @@ const userModel = {
       return user;
     }
   },
-  createUserWithGithubId: (u_id,u_name) => {
+  createUserWithGithubId: (u_id,u_name,u_method) => {
     database.push(
       {
         id:u_id,
         name:u_name,
         email:null,
         password:null,
-        role:'admin'
+        role:'admin',
+        method:u_method
       }
       )
   }
