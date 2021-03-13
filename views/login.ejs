@@ -29,33 +29,32 @@
         <button type="submit" class="btn btn-primary btn-block">Login</button>
       </form>
       OR
+      <div class="grid-container">
       <form action="/auth/github" method="GET">
-      <button type="submit" id='git' class="btn btn-primary btn-block">Login With Github</button>
+      <button type="submit" id='git' class="btn btn-primary grid-item"><img alt='sign in with reddit' width="32" height="32" src="/images/github.png"></button>
     </form>
-    OR
       <form action="/auth/twitch" method="GET">
-      <button type="submit" id='git' class="btn btn-primary btn-block">Login With Twitch</button>
+      <button type="submit" id='git' class="btn btn-primary grid-item"><img alt='sign in with reddit' width="32" height="32" src="/images/twitch.png"></button>
     </form>
-    OR
       <form action="/auth/imgur" method="GET">
-      <button type="submit" id='git' class="btn btn-primary btn-block">Login With Imgur</button>
+      <button type="submit" id='git' class="btn btn-primary grid-item"><img alt='sign in with reddit' width="32" height="32" src="/images/imgur.png"></button>
     </form>
-    OR
       <form action="/auth/reddit" method="GET">
-      <button type="submit" id='git' class="btn btn-primary btn-block">Login With Reddit</button>
+      <button type="submit" id='git' class="btn btn-primary grid-item"><img alt='sign in with reddit' width="32" height="32" src="/images/reddit.png"></button>
     </form>
-    OR
+  </div>
+    NOT
+    <div class="grid-container1">
       <form action="/auth/slack" method="GET">
-      <button type="submit" id='git' class="btn btn-primary btn-block" style='filter: grayscale(1);'disabled>Login With Slack</button>
+      <button type="submit" id='git' class="btn btn-primary grid-item" style='filter: grayscale(1);'disabled><img alt='sign in with reddit' width="32" height="32" src="/images/slack.png"></button>
     </form>
-    OR
       <form action="/auth/twitter" method="GET">
-      <button type="submit" id='git' class="btn btn-primary btn-block" style='filter: grayscale(1);' disabled>Login With Twitter</button>
+      <button type="submit" id='git' class="btn btn-primary grid-item" style='filter: grayscale(1);' disabled><img alt='sign in with reddit' width="32" height="32" src="/images/twitter.png"></button>
     </form>
-    OR
       <form action="/auth/linkedin" method="GET">
-      <button type="submit" id='git' class="btn btn-primary btn-block" style='filter: grayscale(1);'disabled>Login With LinkedIn</button>
+      <button type="submit" id='git' class="btn btn-primary grid-item" style='filter: grayscale(1);'disabled><img alt='sign in with reddit' width="32" height="32" src="/images/linkedin.png"></button>
     </form>
+  </div>
       <p class="mt-4">New User? <a href="/auth/register">Register</a></p>
       <p>Forgot Password? <a href="/auth/forgot">Reset</a></p>
     </div>

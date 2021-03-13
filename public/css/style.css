@@ -1,3 +1,11 @@
 #git {
-    padding-bottom: 20%;
+    padding: 5px;
 }
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+  }
+  .grid-container1 {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }

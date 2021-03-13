@@ -25,6 +25,7 @@ app.use(
 const passport = require("./middleware/passport");
 const authRoute = require("./routes/authRoute");
 const indexRoute = require("./routes/indexRoute");
+const imageRoute = require("./routes/imageRoute");
 
 // Middleware for express
 app.use(express.json());
@@ -47,6 +48,7 @@ app.use((req, res, next) => {
 
 app.use("/", indexRoute);
 app.use("/auth", authRoute);
+app.use("/images", imageRoute)
 
 
 app.listen(port, () => {

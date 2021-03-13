@@ -5,7 +5,7 @@ const router = express.Router();
 const { ensureAuthenticated, isAdmin } = require("../middleware/checkAuth");
 
 router.get("/", (req, res) => {
-  res.send("welcome");
+  res.redirect('/dashboard');
 });
 
 router.get("/dashboard", ensureAuthenticated, (req, res) => {
