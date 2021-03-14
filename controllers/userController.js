@@ -73,11 +73,25 @@ const getUserByRedditIdOrCreate = (profile) => {
   }
 }
 
+const getUserBySpotifyIdOrCreate = (profile) => {
+  let user = userModel.OUTSIDEfindById(profile['id']);
+  if (user) {
+    return user;
+  }
+
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],'Spotify');
+  user = userModel.OUTSIDEfindById(profile['id']);
+  if (user) {
+    return user;
+  }
+}
+
 module.exports = {
   getUserByEmailIdAndPassword,
   getUserById,
   getUserByGithubIdOrCreate,
   getUserByTwitchIdOrCreate,
   getUserByImgurIdOrCreate,
-  getUserByRedditIdOrCreate
+  getUserByRedditIdOrCreate,
+  getUserBySpotifyIdOrCreate
 };

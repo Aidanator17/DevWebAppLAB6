@@ -83,7 +83,7 @@ router.get('/imgur',
   passport.authenticate('imgur'));
 
 router.get('/imgur/callback', 
-  passport.authenticate('imgur', { failureRedirect: '/login' }),
+  passport.authenticate('imgur', { failureRedirect: '/auth/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/dashboard');
@@ -112,10 +112,30 @@ router.get('/reddit',
   passport.authenticate('reddit'));
 
 router.get('/reddit/callback',
-  passport.authenticate('reddit', { failureRedirect: '/login' }),
+  passport.authenticate('reddit', { failureRedirect: '/auth/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/dashboard');
   });
+
+//SPOTIFY
+router.get('/imgur', forwardAuthenticated,
+ (req,res) => res.redirect("https://accounts.spotify.com/authorize?client_id=8cab51c0fd034073ae9b207f1537f418&response_type=code&redirect_uri=http://localhost:8000/auth/spotify/callback"))
+
+
+
+router.get('/spotify', passport.authenticate('spotify'), function(req, res) {
+  // The request will be redirected to spotify for authentication, so this
+  // function will not be called.
+});
+
+router.get(
+  '/spotify/callback',
+  passport.authenticate('spotify', { failureRedirect: '/auth/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/dashboard');
+  }
+);
 
 module.exports = router;

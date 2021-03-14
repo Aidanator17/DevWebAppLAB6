@@ -8,6 +8,7 @@ const InstagramStrategy = require('passport-instagram').Strategy;
 const SlackStrategy = require('passport-slack').Strategy;
 const ImgurStrategy = require('passport-imgur').Strategy;
 const RedditStrategy = require('passport-reddit').Strategy;
+const SpotifyStrategy = require('passport-spotify').Strategy;
 const userController = require("../controllers/userController");
 const userModel = require("../models/userModel").userModel;
 const localLogin = new LocalStrategy(
@@ -78,11 +79,23 @@ const RedditLogin = new RedditStrategy({
   callbackURL: "http://localhost:8000/auth/reddit/callback"
 },
 function(accessToken, refreshToken, profile, done) {
-  console.log('!!!!!!',profile)
   let user = userController.getUserByRedditIdOrCreate(profile)
   return done(null, user);
 }
 );
+
+const SpotifyLogin = new SpotifyStrategy(
+  {
+    clientID: '8cab51c0fd034073ae9b207f1537f418',
+    clientSecret: '7f2b0229a0c641639a2ed8953ba1c1cd',
+    callbackURL: 'http://localhost:8000/auth/spotify/callback'
+  },
+  function(accessToken, refreshToken, expires_in, profile, done) {
+    console.log('!!!!!!',profile)
+    let user = userController.getUserBySpotifyIdOrCreate(profile)
+    return done(null, user);
+  }
+  );
 
 
 
@@ -131,8 +144,8 @@ const SlackLogin = new SlackStrategy({
   scope: ['users.profile:read']
 }, function(token, tokenSecret, profile, cb) {
   console.log('!!!!!!!!',profile)
-  let user = userController.getUserByTwitchIdOrCreate(profile)
+  let user = userController.getUserByRedditIdOrCreate(profile)
   return cb(null, user);
 }
 );
-module.exports = passport.use(GithubLogin),passport.use(localLogin),passport.use(TwitterLogin),passport.use(TwitchLogin),passport.use(LinkedInLogin),passport.use(InstagramLogin),passport.use(SlackLogin),passport.use(ImgurLogin),passport.use(RedditLogin); //Facebook, Google, Reddit, Spotify, Steam
+module.exports = passport.use(GithubLogin),passport.use(localLogin),passport.use(TwitterLogin),passport.use(TwitchLogin),passport.use(LinkedInLogin),passport.use(InstagramLogin),passport.use(SlackLogin),passport.use(ImgurLogin),passport.use(RedditLogin),passport.use(SpotifyLogin); //Facebook, Google, Spotify, Steam
