@@ -9,6 +9,7 @@ const SlackStrategy = require('passport-slack').Strategy;
 const ImgurStrategy = require('passport-imgur').Strategy;
 const RedditStrategy = require('passport-reddit').Strategy;
 const SpotifyStrategy = require('passport-spotify').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const userController = require("../controllers/userController");
 const userModel = require("../models/userModel").userModel;
 const localLogin = new LocalStrategy(
@@ -97,7 +98,17 @@ const SpotifyLogin = new SpotifyStrategy(
   }
   );
 
-
+const GoogleLogin = new GoogleStrategy({
+  clientID: '140253723840-gfhpe3kjgfcg2hlcnf0rf2014rkqur5o.apps.googleusercontent.com',
+  clientSecret: 'vbmQckkQRhBYsJw1ssVqtL1f',
+  callbackURL: "http://localhost:8000/auth/google/callback"
+},
+function(accessToken, refreshToken, profile, cb) {
+  console.log('!!!!!!!!!!!!!',profile)
+  let user = userController.getUserByGoogleIdOrCreate(profile)
+  return cb(null, user);
+}
+)
 
 
 
@@ -148,4 +159,15 @@ const SlackLogin = new SlackStrategy({
   return cb(null, user);
 }
 );
-module.exports = passport.use(GithubLogin),passport.use(localLogin),passport.use(TwitterLogin),passport.use(TwitchLogin),passport.use(LinkedInLogin),passport.use(InstagramLogin),passport.use(SlackLogin),passport.use(ImgurLogin),passport.use(RedditLogin),passport.use(SpotifyLogin); //Facebook, Google, Spotify, Steam
+module.exports = passport.use(GithubLogin),
+                 passport.use(localLogin),
+                 passport.use(TwitterLogin),
+                 passport.use(TwitchLogin),
+                 passport.use(LinkedInLogin),
+                 passport.use(InstagramLogin),
+                 passport.use(SlackLogin),
+                 passport.use(ImgurLogin),
+                 passport.use(RedditLogin),
+                 passport.use(SpotifyLogin),
+                 passport.use(GoogleLogin); 
+                 //Facebook, Google, Steam

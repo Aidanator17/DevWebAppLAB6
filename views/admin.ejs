@@ -1,6 +1,6 @@
 <h1 class="mt-4">Dashboard</h1>
 <p class="lead mb-3">Welcome <%= user.name %> (ID# <%= user.id %>)</p>
-<a href="/auth/logout" class="btn btn-secondary">Logout</a>
+<a href="/auth/logout" class="btn btn-secondary">Logout</a><a href="/restart" class="btn btn-secondary">Reboot</a>
 <p><br>Current active sessions:</p>
 <% console.log(sessions);for (i in sessions){ %>
     <p>SessionID: <%= i %><br>
