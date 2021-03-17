@@ -10,6 +10,7 @@ const ImgurStrategy = require('passport-imgur').Strategy;
 const RedditStrategy = require('passport-reddit').Strategy;
 const SpotifyStrategy = require('passport-spotify').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const userController = require("../controllers/userController");
 const userModel = require("../models/userModel").userModel;
 const localLogin = new LocalStrategy(
@@ -104,13 +105,22 @@ const GoogleLogin = new GoogleStrategy({
   callbackURL: "http://localhost:8000/auth/google/callback"
 },
 function(accessToken, refreshToken, profile, cb) {
-  console.log('!!!!!!!!!!!!!',profile)
   let user = userController.getUserByGoogleIdOrCreate(profile)
   return cb(null, user);
 }
 )
 
-
+const FacebookLogin = new FacebookStrategy({
+  clientID: '128267682564398',
+  clientSecret: '23f07cdcb7060f260bac6054f9e8f6e9',
+  callbackURL: "https://424e2605d0a9.ngrok.io/auth/facebook/callback"
+},
+function(accessToken, refreshToken, profile, cb) {
+  console.log('!!!!!!!!!!!!!',profile)
+  let user = userController.getUserByFacebookIdOrCreate(profile)
+  return cb(null, user);
+}
+)
 
 
 //NOT PROPERLY IMPLEMENTED 
@@ -159,6 +169,7 @@ const SlackLogin = new SlackStrategy({
   return cb(null, user);
 }
 );
+
 module.exports = passport.use(GithubLogin),
                  passport.use(localLogin),
                  passport.use(TwitterLogin),
@@ -169,5 +180,6 @@ module.exports = passport.use(GithubLogin),
                  passport.use(ImgurLogin),
                  passport.use(RedditLogin),
                  passport.use(SpotifyLogin),
-                 passport.use(GoogleLogin); 
-                 //Facebook, Google, Steam
+                 passport.use(GoogleLogin),
+                 passport.use(FacebookLogin); 
+                 //Facebook, Steam

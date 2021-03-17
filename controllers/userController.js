@@ -99,6 +99,19 @@ const getUserByGoogleIdOrCreate = (profile) => {
   }
 }
 
+const getUserByFacebookIdOrCreate = (profile) => {
+  let user = userModel.OUTSIDEfindById(profile['id']);
+  if (user) {
+    return user;
+  }
+
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],'Facebook');
+  user = userModel.OUTSIDEfindById(profile['id']);
+  if (user) {
+    return user;
+  }
+}
+
 module.exports = {
   getUserByEmailIdAndPassword,
   getUserById,
@@ -107,5 +120,6 @@ module.exports = {
   getUserByImgurIdOrCreate,
   getUserByRedditIdOrCreate,
   getUserBySpotifyIdOrCreate,
-  getUserByGoogleIdOrCreate
+  getUserByGoogleIdOrCreate,
+  getUserByFacebookIdOrCreate
 };
