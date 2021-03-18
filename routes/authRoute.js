@@ -154,7 +154,7 @@ router.get('/google/callback',
 
 //FACEBOOK
 router.get('/facebook',
-  (req,res) => res.redirect("https://www.facebook.com/v10.0/dialog/oauth?client_id=128267682564398&redirect_uri=https://424e2605d0a9.ngrok.io/auth/facebook/callback&state="))
+  (req,res) => res.redirect("https://www.facebook.com/v10.0/dialog/oauth?client_id=128267682564398&redirect_uri=https://46ae0790eb61.ngrok.io/auth/facebook/callback&state="))
 
 router.get('/facebook',
   passport.authenticate('facebook'));

@@ -113,7 +113,7 @@ function(accessToken, refreshToken, profile, cb) {
 const FacebookLogin = new FacebookStrategy({
   clientID: '128267682564398',
   clientSecret: '23f07cdcb7060f260bac6054f9e8f6e9',
-  callbackURL: "https://424e2605d0a9.ngrok.io/auth/facebook/callback"
+  callbackURL: "https://46ae0790eb61.ngrok.io/auth/facebook/callback"
 },
 function(accessToken, refreshToken, profile, cb) {
   console.log('!!!!!!!!!!!!!',profile)
