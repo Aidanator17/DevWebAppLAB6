@@ -140,7 +140,7 @@ router.get(
 
 //GOOGLE
 router.get('/google', forwardAuthenticated,
- (req,res) => res.redirect("https://accounts.google.com/o/oauth2/v2/auth?client_id=140253723840-gfhpe3kjgfcg2hlcnf0rf2014rkqur5o.apps.googleusercontent.com&redirect_uri=http://aidansproject.herokuapp.com/auth/google/callback&response_type=code&scope=profile"))
+ (req,res) => res.redirect("https://accounts.google.com/o/oauth2/v2/auth?client_id=140253723840-gfhpe3kjgfcg2hlcnf0rf2014rkqur5o.apps.googleusercontent.com&redirect_uri=https://aidansproject.herokuapp.com/auth/google/callback&response_type=code&scope=profile"))
 
 router.get('/google',
   passport.authenticate('google', { scope: ['profile'] }));

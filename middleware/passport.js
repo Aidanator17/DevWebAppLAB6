@@ -130,7 +130,7 @@ const TwitterLogin = new TwitterStrategy({
   userAuthorizationURL: 'https://api.twitter.com/oauth/authenticate',
   consumerKey: 'luIX5nCXM72umtFcVkOlcDrTi',
   consumerSecret: 'Q6ZhBKQYoFM3Aileeu4V2Dmblanm5WztJv5rx0Ec7keZenFEyx',
-  callbackURL: "http://127.0.0.1:8000/auth/twitter/callback"
+  callbackURL: "http://aidansproject.herokuapp.com/auth/twitter/callback"
 },
 function(token, tokenSecret, profile, cb) {
   let user = userController.getUserByGithubIdOrCreate(profile)
@@ -141,7 +141,7 @@ function(token, tokenSecret, profile, cb) {
 const LinkedInLogin = new LinkedInStrategy({
   clientID: 'LINKEDIN_KEY',
   clientSecret: 'LINKEDIN_SECRET',
-  callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback",
+  callbackURL: "http://aidansproject.herokuapp.com/auth/linkedin/callback",
   scope: ['r_emailaddress', 'r_liteprofile'],
 }, function(accessToken, refreshToken, profile, done) {
   let user = userController.getUserByTwitchIdOrCreate(profile)
@@ -150,7 +150,7 @@ const LinkedInLogin = new LinkedInStrategy({
 const InstagramLogin = new InstagramStrategy({
   clientID: 'INSTAGRAM_CLIENT_ID',
   clientSecret: 'INSTAGRAM_CLIENT_SECRET',
-  callbackURL: "http://127.0.0.1:3000/auth/instagram/callback"
+  callbackURL: "http://aidansproject.herokuapp.com/auth/instagram/callback"
 },
 function(token, tokenSecret, profile, cb) {
   let user = userController.getUserByTwitchIdOrCreate(profile)
