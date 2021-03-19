@@ -122,17 +122,6 @@ function(accessToken, refreshToken, profile, cb) {
 }
 )
 
-const InstagramLogin = new InstagramStrategy({
-  clientID: '942668589893599',
-  clientSecret: 'd221ed842216de286cb5aa98efcc4e0a',
-  callbackURL: "https://aidansproject.herokuapp.com/auth/instagram/callback"
-},
-function(token, tokenSecret, profile, cb) {
-  let user = userController.getUserByTwitchIdOrCreate(profile)
-  console.log('!!!!!!!!',profile)
-  return cb(null, user);
-}
-);
 
 //NOT PROPERLY IMPLEMENTED 
 const TwitterLogin = new TwitterStrategy({
@@ -145,6 +134,18 @@ const TwitterLogin = new TwitterStrategy({
 },
 function(token, tokenSecret, profile, cb) {
   let user = userController.getUserByGithubIdOrCreate(profile)
+  return cb(null, user);
+}
+);
+
+const InstagramLogin = new InstagramStrategy({
+  clientID: '942668589893599',
+  clientSecret: 'd221ed842216de286cb5aa98efcc4e0a',
+  callbackURL: "https://aidansproject.herokuapp.com/auth/instagram/callback"
+},
+function(token, tokenSecret, profile, cb) {
+  let user = userController.getUserByTwitchIdOrCreate(profile)
+  console.log('!!!!!!!!',profile)
   return cb(null, user);
 }
 );

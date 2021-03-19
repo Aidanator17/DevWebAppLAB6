@@ -11,6 +11,4 @@ to fix this, you must go register your own apps on each platform, and get your o
 
 #TROUBLESHOOTING
 
-for those who try to connect to the server through another device, you will get an error.
-luckily, there is a fix to this.
-the callbacks and routes all hostname "localhost:8000", replace this hostname with "<your host machine's IPv4 address>:8000".
+all of this code is centered around my url "aidansproject.herokuapp.com" so if you're recreating anything, be sure to change the set callbacks
