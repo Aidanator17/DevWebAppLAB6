@@ -168,7 +168,7 @@ router.get('/facebook/callback',
 
 //INSTAGRAM
 router.get('/instagram',
-(req,res) => res.redirect("https://www.instagram.com/v10.0/dialog/oauth?client_id=128267682564398&redirect_uri=https://aidansproject.herokuapp.com/auth/instagram/callback&state="))
+(req,res) => res.redirect("https://api.instagram.com/oauth/authorize?client_id=942668589893599&redirect_uri=https://aidansproject.herokuapp.com/auth/instagram/callback&scope=user_profile&response_type=code"))
 
 router.get('/instagram',
   passport.authenticate('instagram'));
