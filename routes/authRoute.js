@@ -166,4 +166,17 @@ router.get('/facebook/callback',
     res.redirect('/');
   });
 
+//INSTAGRAM
+router.get('/instagram',
+(req,res) => res.redirect("https://www.instagram.com/v10.0/dialog/oauth?client_id=128267682564398&redirect_uri=https://aidansproject.herokuapp.com/auth/instagram/callback&state="))
+
+router.get('/instagram',
+  passport.authenticate('instagram'));
+
+router.get('/instagram/callback', 
+  passport.authenticate('instagram', { failureRedirect: '/auth/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
 module.exports = router;
