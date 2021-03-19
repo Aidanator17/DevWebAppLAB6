@@ -69,6 +69,11 @@ router.get("/revokeall", (req, res) => {
   const store = req.sessionStore;
   let sid = req.query.sid
   console.log('!!!!!!!!!!',sid)
+  store.clear((error) => {
+    if (error) {
+      console.log(error);
+    }
+  })
   for (id in sid) {
     store.destroy(id, (error) => {
       if (error) {
