@@ -7,5 +7,5 @@
   }
   .grid-container1 {
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto auto;
   }
