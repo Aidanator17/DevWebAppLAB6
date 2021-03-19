@@ -64,4 +64,16 @@ router.get("/revoke", (req, res) => {
   res.redirect("/admin");
 });
 
+router.get("/revokeall", (req, res) => {
+  const store = req.sessionStore;
+  let sid = req.query.sid
+  for (id in sid){
+  store.destroy(id,(error) => {
+    if (error) {
+        console.log(error);
+    }});
+  }
+  res.redirect("/admin");
+});
+
 module.exports = router;
