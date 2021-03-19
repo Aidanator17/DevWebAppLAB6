@@ -52,7 +52,7 @@ router.get('/twitter/callback',
 
 //TWITCH
 router.get("/twitch", forwardAuthenticated,
- (req, res) => res.redirect("https://id.twitch.tv/oauth2/authorize?client_id=da93knokd48iuran0qvokd1i9yk76h&redirect_uri=http://aidansproject.herokuapp.com/auth/twitch/callback&response_type=token&scope=user_read"));
+ (req, res) => res.redirect("https://id.twitch.tv/oauth2/authorize?client_id=da93knokd48iuran0qvokd1i9yk76h&redirect_uri=https://aidansproject.herokuapp.com/auth/twitch/callback&response_type=token&scope=user_read"));
 
 router.get("/twitch",
  passport.authenticate("twitch"));
@@ -106,7 +106,7 @@ router.get('/linkedin/callback', passport.authenticate('linkedin', {
 
 //REDDIT
 router.get('/reddit', forwardAuthenticated,
- (req,res) => res.redirect("https://www.reddit.com/api/v1/authorize?client_id=Ym8x5Lg8tVfafw&response_type=code&state=stated&redirect_uri=http://aidansproject.herokuapp.com/auth/reddit/callback&duration=permanent&scope=identity"))
+ (req,res) => res.redirect("https://www.reddit.com/api/v1/authorize?client_id=Ym8x5Lg8tVfafw&response_type=code&state=stated&redirect_uri=https://aidansproject.herokuapp.com/auth/reddit/callback&duration=permanent&scope=identity"))
 
 router.get('/reddit',
   passport.authenticate('reddit'));
@@ -120,7 +120,7 @@ router.get('/reddit/callback',
 
 //SPOTIFY
 router.get('/imgur', forwardAuthenticated,
- (req,res) => res.redirect("https://accounts.spotify.com/authorize?client_id=8cab51c0fd034073ae9b207f1537f418&response_type=code&redirect_uri=http://aidansproject.herokuapp.com/auth/spotify/callback"))
+ (req,res) => res.redirect("https://accounts.spotify.com/authorize?client_id=8cab51c0fd034073ae9b207f1537f418&response_type=code&redirect_uri=https://aidansproject.herokuapp.com/auth/spotify/callback"))
 
 
 

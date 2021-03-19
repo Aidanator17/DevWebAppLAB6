@@ -7,7 +7,7 @@
         UserID: <%= sessions[i]['passport']['user'] %><br>
         Name: <% for (a in database){ if (database[a]['id'] == sessions[i]['passport']['user']){ %> <%= database[a]['name'] %> <% }} %><br>
         Role: <% for (a in database){ if (database[a]['id'] == sessions[i]['passport']['user']){ if (database[a]['role'] == 'user'){ %> <span style="color: green"><%= database[a]['role'] %></span> <% }else{  %><span style="color: blue"><%= database[a]['role'] %></span><%}}} %>
-        <% let link = 'http://aidansproject.herokuapp.com/revoke?sid='+i%>
+        <% let link = 'https://aidansproject.herokuapp.com/revoke?sid='+i%>
         <br>
         LoginMethod: <% for (a in database){ if (database[a]['id'] == sessions[i]['passport']['user']){ %> <%= database[a]['method'] %> <% }} %><br>
         <a href="<%= link %>" class="btn btn-primary" role="button">Revoke Session</a>
