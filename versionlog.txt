@@ -1,0 +1,5 @@
+#Version 1.0
+-website url is currently aidansproject.herokuapp.com
+-website can be logged into through 8 different methods (currently locallogin only has preset email and passwords able to be used)
+-when logged into a user account, you can see which admins are online
+-when logged into an admin account, you can see all current sessions (with each session's info) and revoke any or all
