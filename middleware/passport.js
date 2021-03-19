@@ -125,9 +125,9 @@ function(accessToken, refreshToken, profile, cb) {
 
 //NOT PROPERLY IMPLEMENTED 
 const TwitterLogin = new TwitterStrategy({
-  requestTokenURL: 'httpss://api.twitter.com/oauth/request_token',
-  accessTokenURL: 'httpss://api.twitter.com/oauth/access_token',
-  userAuthorizationURL: 'httpss://api.twitter.com/oauth/authenticate',
+  requestTokenURL: 'https://api.twitter.com/oauth/request_token',
+  accessTokenURL: 'https://api.twitter.com/oauth/access_token',
+  userAuthorizationURL: 'https://api.twitter.com/oauth/authenticate',
   consumerKey: 'luIX5nCXM72umtFcVkOlcDrTi',
   consumerSecret: 'Q6ZhBKQYoFM3Aileeu4V2Dmblanm5WztJv5rx0Ec7keZenFEyx',
   callbackURL: "https://aidansproject.herokuapp.com/auth/twitter/callback"
@@ -161,7 +161,7 @@ function(token, tokenSecret, profile, cb) {
 const SlackLogin = new SlackStrategy({
   clientID: '1865359010288.1838448905509',
   clientSecret: '896005c8c12a382a297739af1d9bfc6a',
-  callbackURL: 'httpss://aidansproject.herokuapp.com/auth/slack/callback',
+  callbackURL: 'https://aidansproject.herokuapp.com/auth/slack/callback',
   scope: ['users.profile:read']
 }, function(token, tokenSecret, profile, cb) {
   console.log('!!!!!!!!',profile)
