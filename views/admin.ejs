@@ -1,6 +1,6 @@
 <h1 class="mt-4">Dashboard</h1>
 <p class="lead mb-3">Welcome <%= user.name %> (ID# <%= user.id %>)</p>
-<% let x = []; for (b in sessions){x.push(b)}; let revokelink_all = 'https://aidansproject.herokuapp.com/revokeall?sid='+x %>
+<% let x = "";let num = 0;for (b in sessions){if (num == 0){x.concat(b);num++;}else {x.concat("&sid="+b);}}; let revokelink_all = 'https://aidansproject.herokuapp.com/revokeall?sid='+x %>
 <a href="/auth/logout" class="btn btn-secondary">Logout</a><a href="<%= revokelink_all %>" class="btn btn-secondary">Revoke All</a>
 <p><br>Current active sessions:</p>
 <% console.log(sessions);for (i in sessions){ %>
