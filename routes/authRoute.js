@@ -4,6 +4,9 @@ const { forwardAuthenticated } = require("../middleware/checkAuth");
 
 const router = express.Router();
 
+router.get("/register", (req, res) => {
+  res.render('register');
+});
 
 //LOCAL
 router.get("/login", forwardAuthenticated, (req, res) => res.render("login"));
