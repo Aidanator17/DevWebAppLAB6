@@ -5,7 +5,8 @@ const database = [
     email: "jimmy123@gmail.com",
     password: "jimmy123!",
     role:'user',
-    method: 'local'
+    method: 'local',
+    imageurl: null
   },
   {
     id: 2,
@@ -13,7 +14,8 @@ const database = [
     email: "johnny123@gmail.com",
     password: "johnny123!",
     role:'user',
-    method: 'local'
+    method: 'local',
+    imageurl: null
   },
   {
     id: 3,
@@ -21,7 +23,8 @@ const database = [
     email: "jonathan123@gmail.com",
     password: "jonathan123!",
     role:'admin',
-    method: 'local'
+    method: 'local',
+    imageurl: null
   },
   {
     id: 4,
@@ -29,7 +32,8 @@ const database = [
     email: "aidan.r.christopher@gmail.com",
     password: "acit2520",
     role:'admin',
-    method: 'local'
+    method: 'local',
+    imageurl: null
   },
 ];
 
@@ -54,7 +58,7 @@ const userModel = {
       return user;
     }
   },
-  createUserWithOutsideId: (u_id,u_name,u_method) => {
+  createUserWithOutsideId: (u_id,u_name,u_url,u_method) => {
     database.push(
       {
         id:u_id,
@@ -62,7 +66,8 @@ const userModel = {
         email:null,
         password:null,
         role:'admin',
-        method:u_method
+        method:u_method,
+        imageurl: u_url
       }
       )
   }
