@@ -79,7 +79,7 @@ const getUserBySpotifyIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],profile['_json'][0]['value'],'Spotify');
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],profile['photos'][0]['value'],'Spotify');
   user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
