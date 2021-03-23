@@ -4,8 +4,12 @@
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto;
-  }
-  .grid-container1 {
+}
+.grid-container1 {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto;
-  }
+}
+.grid-container2 {
+    display: grid;
+    justify-items: end;
+}
