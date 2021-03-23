@@ -61,7 +61,7 @@ router.get("/admin", ensureAuthenticated, (req, res) => {
           user: req.user,
           sessions,
           database,
-          img_url: imageurl
+          img_url: req.user.imageurl
         });
       }
     });
