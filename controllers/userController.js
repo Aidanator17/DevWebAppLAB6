@@ -27,7 +27,7 @@ const getUserByGithubIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],profile['json']['avatar_url'],'Github');
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],profile['_json']['avatar_url'],'Github');
   user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
