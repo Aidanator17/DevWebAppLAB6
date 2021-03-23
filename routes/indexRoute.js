@@ -48,7 +48,8 @@ router.get("/admin", ensureAuthenticated, (req, res) => {
         res.render('admin', {
           user: req.user,
           sessions,
-          database
+          database,
+          img_url: 'https://timesofindia.indiatimes.com/photo/67586673.cms'
         });
       }
     });
