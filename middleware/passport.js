@@ -47,7 +47,6 @@ const GithubLogin = new GitHubStrategy({
   callbackURL: "https://aidansproject.herokuapp.com/auth/github/callback"
 },
 function(accessToken, refreshToken, profile, cb) {
-  console.log("!!!!!!",profile)
   let user = userController.getUserByGithubIdOrCreate(profile)
   return cb(null, user);
 }
@@ -60,6 +59,7 @@ const TwitchLogin = new TwitchStrategy({
   scope: "user_read"
 },
 function(token, tokenSecret, profile, cb) {
+  console.log("!!!!!!TWITCH",profile)
   let user = userController.getUserByTwitchIdOrCreate(profile)
   return cb(null, user);
 }
@@ -71,6 +71,7 @@ const ImgurLogin = new ImgurStrategy({
   callbackURL: "https://aidansproject.herokuapp.com/auth/imgur/callback"
 },
 function(accessToken, refreshToken, profile, done) {
+  console.log("!!!!!!IMGUR",profile)
   let user = userController.getUserByImgurIdOrCreate(profile)
   return done(null, user);
 }
@@ -82,6 +83,7 @@ const RedditLogin = new RedditStrategy({
   callbackURL: "https://aidansproject.herokuapp.com/auth/reddit/callback"
 },
 function(accessToken, refreshToken, profile, done) {
+  console.log("!!!!!!REDDIT",profile)
   let user = userController.getUserByRedditIdOrCreate(profile)
   return done(null, user);
 }
@@ -94,7 +96,7 @@ const SpotifyLogin = new SpotifyStrategy(
     callbackURL: 'https://aidansproject.herokuapp.com/auth/spotify/callback'
   },
   function(accessToken, refreshToken, expires_in, profile, done) {
-    console.log('!!!!!!',profile)
+    console.log('!!!!!!SPOTIFY',profile)
     let user = userController.getUserBySpotifyIdOrCreate(profile)
     return done(null, user);
   }
@@ -106,6 +108,7 @@ const GoogleLogin = new GoogleStrategy({
   callbackURL: "https://aidansproject.herokuapp.com/auth/google/callback"
 },
 function(accessToken, refreshToken, profile, cb) {
+  console.log("!!!!!!GOOGLE",profile)
   let user = userController.getUserByGoogleIdOrCreate(profile)
   return cb(null, user);
 }
@@ -117,7 +120,7 @@ const FacebookLogin = new FacebookStrategy({
   callbackURL: "https://aidansproject.herokuapp.com/auth/facebook/callback"
 },
 function(accessToken, refreshToken, profile, cb) {
-  console.log('!!!!!!!!!!!!!',profile)
+  console.log('!!!!!!!!!!!!!FACEBOOK',profile)
   let user = userController.getUserByFacebookIdOrCreate(profile)
   return cb(null, user);
 }

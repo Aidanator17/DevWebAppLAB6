@@ -15,12 +15,6 @@ router.get("/dashboard", ensureAuthenticated, (req, res) => {
       if (error) {
         console.log(error);
       } else {
-        if (req.user.imageurl == null){
-          let imageurl = 'https://timesofindia.indiatimes.com/photo/67586673.cms'
-        }
-        else {
-          let imageurl = req.user.imageurl
-        }
         console.log(sessions);
         res.render('dashboard', {
           user: req.user,
@@ -50,12 +44,6 @@ router.get("/admin", ensureAuthenticated, (req, res) => {
       if (error) {
         console.log(error);
       } else {
-        if (req.user.imageurl == null){
-          let imageurl = 'https://timesofindia.indiatimes.com/photo/67586673.cms'
-        }
-        else {
-          let imageurl = req.user.imageurl
-        }
         console.log(sessions);
         res.render('admin', {
           user: req.user,
