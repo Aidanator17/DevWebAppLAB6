@@ -47,6 +47,7 @@ const GithubLogin = new GitHubStrategy({
   callbackURL: "https://aidansproject.herokuapp.com/auth/github/callback"
 },
 function(accessToken, refreshToken, profile, cb) {
+  console.log("!!!!!!",profile)
   let user = userController.getUserByGithubIdOrCreate(profile)
   return cb(null, user);
 }

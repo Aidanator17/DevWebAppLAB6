@@ -19,7 +19,8 @@ router.get("/dashboard", ensureAuthenticated, (req, res) => {
         res.render('dashboard', {
           user: req.user,
           sessions,
-          database
+          database,
+          img_url: 'https://timesofindia.indiatimes.com/photo/67586673.cms'
         });
       }
     });

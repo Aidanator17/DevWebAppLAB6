@@ -1,3 +1,6 @@
+#Version 1.1
+-added a register page, though it holds no functionality
+
 #Version 1.0
 -website url is currently aidansproject.herokuapp.com
 -website can be logged into through 8 different methods (currently locallogin only has preset email and passwords able to be used)
