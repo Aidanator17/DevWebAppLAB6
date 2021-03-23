@@ -40,7 +40,7 @@ const getUserByTwitchIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['display_name'],'Twitch');
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['display_name'],profile['profile_image_url'],'Twitch');
   user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
@@ -66,7 +66,7 @@ const getUserByRedditIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['name'],'Reddit');
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['name'],profile['_json']['icon_img'],'Reddit');
   user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
@@ -79,7 +79,7 @@ const getUserBySpotifyIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],'Spotify');
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],profile['_json'][0]['value'],'Spotify');
   user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
@@ -92,7 +92,7 @@ const getUserByGoogleIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],'Google');
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],profile['_json']['picture'],'Google');
   user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
