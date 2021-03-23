@@ -1,5 +1,6 @@
 #Version 1.1
 -added a register page, though it holds no functionality
+-added profile pictures when logging in with Google, Github, Twitch, and Spotify
 
 #Version 1.0
 -website url is currently aidansproject.herokuapp.com
