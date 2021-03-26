@@ -56,6 +56,30 @@ router.get("/admin", ensureAuthenticated, (req, res) => {
   }
 });
 
+router.get("/admindashboard", ensureAuthenticated, (req, res) => {
+  const store = req.sessionStore;
+
+
+  if (req.user.role == 'user') {
+    res.redirect("/dashboard");
+  }
+  if (req.user.role == 'admin') {
+    store.all((error, sessions) => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(sessions);
+        res.render('admindashboard', {
+          user: req.user,
+          sessions,
+          database,
+          img_url: req.user.imageurl
+        });
+      }
+    });
+  }
+});
+
 router.get("/revoke", (req, res) => {
   const store = req.sessionStore;
   let sid = req.query.sid

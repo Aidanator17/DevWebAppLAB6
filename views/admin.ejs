@@ -1,7 +1,7 @@
 <p class="grid-container2"><img height="100" width="100" style="text-align: right;" src="<%= img_url %>"></p>
-<h1 class="mt-4">Dashboard</h1>
+<h1 class="mt-4">Admin Dashboard</h1>
 <p class="lead mb-3">Welcome <%= user.name %> (ID# <%= user.id %>)</p>
-<a href="/auth/logout" class="btn btn-secondary">Logout</a><a href="/revokeall" class="btn btn-secondary">Revoke All</a>
+<div><a href="/auth/logout" class="btn btn-secondary git">Logout</a><a href="/admindashboard" class="btn btn-secondary git">Dashboard</a><a href="/revokeall" class="btn btn-secondary git">Revoke All</a></div>
 <p><br>Current active sessions:</p>
 <% console.log(sessions);for (i in sessions){ %>
     <p>SessionID: <%= i %><br>

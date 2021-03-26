@@ -1,6 +1,9 @@
 #git {
     padding: 5px;
 }
+.git {
+    margin: 5px;
+}
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto;
