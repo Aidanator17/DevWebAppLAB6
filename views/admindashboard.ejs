@@ -24,3 +24,11 @@
         %>
 </p>
 <a href="/auth/logout" class="btn btn-secondary git">Logout</a><a href="/admin" class="btn btn-secondary git">Admin</a>
+<form action="/valorant" method="POST">
+    <label for="fname">Riot ID:</label>
+    <input placeholder="Ex. JohnDoe#0000" type="text" id="riotid" name="riotid">
+    <input type="submit" value="Submit">
+  </form>
+<% if (val[0] == true){ for (i in val[1]){%>
+    <p><%= String(i)+": "+String(val[1][i])+"\n" %></p>
+    <% }} %>
