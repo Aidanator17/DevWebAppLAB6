@@ -2,10 +2,10 @@
 <h1 class="mt-4">Users</h1>
 <p class="lead mb-3">Welcome <%= user.name %> (ID# <%= user.id %>)</p>
 <div><a href="/auth/logout" class="btn btn-secondary git">Logout</a><a href="/admindashboard" class="btn btn-secondary git">Dashboard</a><a href="/admin" class="btn btn-secondary git">Back</a></div><br>
-<% if (user.role == 'superadmin') { for (i in database) {%>
-<p>Name: <%= i.name %></p>
-<p>Email: <%= i.email %></p>
-<p>Password: <%= i.password %></p>
-<p>Role: <%= i.role %></p>
+<% if (user.role == 'superadmin') { for (i in database[0]) {%>
+<p>Name: <%= database[0][i]['name'] %></p>
+<p>Email: <%= database[0][i]['email'] %></p>
+<p>Password: <%= database[0][i]['password'] %></p>
+<p>Role: <%= database[0][i]['role'] %></p>
 <br>
 <% }} %>

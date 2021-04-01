@@ -12,19 +12,6 @@ router.get("/", (req, res) => {
 });
 
 router.get("/dashboard", ensureAuthenticated, async (req, res) => {
-  try {
-    const users = await prisma.user.findMany({
-      select: {
-        email: true,
-        name: true,
-        method: true,
-        role: true
-      }
-    })
-    console.log('USERS:',users)
-  } catch (err) {
-    return res.status(500).json({ error: "Something went wrong" })
-  }
   const store = req.sessionStore;
   if (req.user.role == 'user') {
     store.all((error, sessions) => {
@@ -42,7 +29,7 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
       }
     });
   }
-  if (req.user.role == 'admin') {
+  if (req.user.role == 'admin' || req.user.role == 'superadmin') {
     res.redirect('/admin')
   }
 });
@@ -56,7 +43,7 @@ router.get("/admin", ensureAuthenticated, (req, res) => {
   if (req.user.role == 'user') {
     res.redirect("/dashboard");
   }
-  if (req.user.role == 'admin') {
+  if (req.user.role == 'admin' || req.user.role == 'superadmin') {
     store.all((error, sessions) => {
       if (error) {
         console.log(error);
@@ -80,7 +67,7 @@ router.get("/admindashboard", ensureAuthenticated, (req, res) => {
   if (req.user.role == 'user') {
     res.redirect("/dashboard");
   }
-  if (req.user.role == 'admin') {
+  if (req.user.role == 'admin' || req.user.role == 'superadmin') {
     store.all((error, sessions) => {
       if (error) {
         console.log(error);
@@ -156,6 +143,14 @@ router.post("/valorant", (req, res) => {
       }
     }
   })
+});
+
+router.get("/superadmin", (req, res) => {
+  res.render('superadmin', {
+                user: req.user,
+                database,
+                img_url: req.user.imageurl,
+              });
 });
 
 

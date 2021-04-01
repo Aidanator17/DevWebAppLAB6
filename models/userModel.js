@@ -2,9 +2,10 @@ const express = require("express");
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 const request = require('request');
+let sites = ['https://aidansproject.herokuapp.com','http://localhost:8000']
 
 let database = []
-request('https://aidansproject.herokuapp.com/database/users', function (error, response, body) {
+request(sites[0]+'/database/users', function (error, response, body) {
   console.log("BODY:",JSON.parse(body))
   database.push(JSON.parse(body))
   })
@@ -19,14 +20,14 @@ const userModel = {
     throw new Error(`Couldn't find user with email: ${email}`);
   },
   findById: (id) => {
-    const user = database.find((user) => user.id === id);
+    const user = database[0].find((user) => user.id === id);
     if (user) {
       return user;
     }
     throw new Error(`Couldn't find user with id: ${id}`);
   },
   OUTSIDEfindById: (id) => {
-    const user = database.find((user) => user.id === id);
+    const user = database[0].find((user) => user.id === id);
     if (user) {
       return user;
     }
