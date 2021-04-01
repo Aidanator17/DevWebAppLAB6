@@ -1,7 +1,7 @@
 const express = require("express");
 const { Store } = require("express-session");
 const router = express.Router();
-let database = require("../models/userModel").database
+const { getDatabase() } = require("../models/userModel")
 const { ensureAuthenticated, isAdmin } = require("../middleware/checkAuth");
 const request = require('request');
 const { PrismaClient } = require('@prisma/client')
@@ -22,7 +22,7 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
         res.render('dashboard', {
           user: req.user,
           sessions,
-          database,
+          database: getDatabase(),
           img_url: 'https://timesofindia.indiatimes.com/photo/67586673.cms',
           val: [false, null]
         });
@@ -52,7 +52,7 @@ router.get("/admin", ensureAuthenticated, (req, res) => {
         res.render('admin', {
           user: req.user,
           sessions,
-          database,
+          database: getDatabase(),
           img_url: req.user.imageurl
         });
       }
@@ -76,7 +76,7 @@ router.get("/admindashboard", ensureAuthenticated, (req, res) => {
         res.render('admindashboard', {
           user: req.user,
           sessions,
-          database,
+          database: getDatabase(),
           img_url: req.user.imageurl,
           val: [false, null]
         });
@@ -124,7 +124,7 @@ router.post("/valorant", (req, res) => {
               res.render('admindashboard', {
                 user: req.user,
                 sessions,
-                database,
+                database: getDatabase(),
                 img_url: req.user.imageurl,
                 val: [true, JSON.parse(body)]
               })
@@ -133,7 +133,7 @@ router.post("/valorant", (req, res) => {
               res.render('dashboard', {
                 user: req.user,
                 sessions,
-                database,
+                database: getDatabase(),
                 img_url: req.user.imageurl,
                 val: [true, JSON.parse(body)]
               });
@@ -148,7 +148,7 @@ router.post("/valorant", (req, res) => {
 router.get("/superadmin", (req, res) => {
   res.render('superadmin', {
                 user: req.user,
-                database,
+                database: getDatabase(),
                 img_url: req.user.imageurl,
               });
 });
