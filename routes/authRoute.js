@@ -55,7 +55,7 @@ router.post('/register', async (req, res) => {
 
 
 
-router.get("/register", async (req, res) => {
+router.get("/register", (req, res) => {
   
     res.render('register');
   
