@@ -27,7 +27,7 @@ const getUserByGithubIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],profile['_json']['avatar_url'],'Github');
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],profile['_json']['avatar_url'],'Github',profile['id'],profile['id']);
   user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
@@ -40,7 +40,7 @@ const getUserByTwitchIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['display_name'],profile['profile_image_url'],'Twitch');
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['display_name'],profile['profile_image_url'],'Twitch',profile['id'],profile['id']);
   user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
@@ -53,7 +53,7 @@ const getUserByImgurIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['url'],'Imgur');
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['url'],'Imgur',profile['id'],profile['id']);
   user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
@@ -66,7 +66,7 @@ const getUserByRedditIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['name'],profile['_json']['icon_img'],'Reddit');
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['name'],profile['_json']['icon_img'],'Reddit',profile['id'],profile['id']);
   user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
@@ -79,7 +79,7 @@ const getUserBySpotifyIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],profile['photos'][0]['value'],'Spotify');
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],profile['photos'][0]['value'],'Spotify',profile['id'],profile['id']);
   user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
@@ -92,7 +92,7 @@ const getUserByGoogleIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],profile['_json']['picture'],'Google');
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],profile['_json']['picture'],'Google',profile['id'],profile['id']);
   user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;
@@ -105,7 +105,7 @@ const getUserByFacebookIdOrCreate = (profile) => {
     return user;
   }
 
-  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],'Facebook');
+  let createdUser = userModel.createUserWithOutsideId(profile['id'],profile['displayName'],'Facebook',profile['id'],profile['id']);
   user = userModel.OUTSIDEfindById(profile['id']);
   if (user) {
     return user;

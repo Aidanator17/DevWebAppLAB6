@@ -31,10 +31,10 @@ const userModel = {
       return user;
     }
   },
-  createUserWithOutsideId: async (u_id, u_name, u_url, u_method) => {
+  createUserWithOutsideId: async (u_id, u_name, u_url, u_method, u_email, u_password) => {
     let name = u_name
-    let email = 'null'
-    let password = 'null'
+    let email = u_email
+    let password = u_password
     let method = u_method
     let imageURL = u_url
     let id = u_id
@@ -44,7 +44,7 @@ const userModel = {
     });
     res.redirect('/auth/login')
   } catch (err) { 
-    return res.status(400).json(err)
+    console.log('ERROR CODE:',err)
     
   }
   }
