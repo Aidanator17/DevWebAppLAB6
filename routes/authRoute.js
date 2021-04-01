@@ -49,7 +49,7 @@ router.post('/register', async (req, res) => {
       data: { name, email, password, imageURL }
     });
     console.log("!!!!!!!",user)
-    return res.json(user);
+    res.redirect('/auth/login')
   } catch (err) { 
     console.log("!!!!!!!",err)
     return res.status(400).json(err)
