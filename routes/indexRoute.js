@@ -1,15 +1,30 @@
 const express = require("express");
 const { Store } = require("express-session");
-const database = require("../models/userModel").database;
 const router = express.Router();
+let database = require("../models/userModel").database
 const { ensureAuthenticated, isAdmin } = require("../middleware/checkAuth");
 const request = require('request');
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient()
 
 router.get("/", (req, res) => {
   res.redirect('/dashboard');
 });
 
-router.get("/dashboard", ensureAuthenticated, (req, res) => {
+router.get("/dashboard", ensureAuthenticated, async (req, res) => {
+  try {
+    const users = await prisma.user.findMany({
+      select: {
+        email: true,
+        name: true,
+        method: true,
+        role: true
+      }
+    })
+    console.log('USERS:',users)
+  } catch (err) {
+    return res.status(500).json({ error: "Something went wrong" })
+  }
   const store = req.sessionStore;
   if (req.user.role == 'user') {
     store.all((error, sessions) => {

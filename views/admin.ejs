@@ -1,13 +1,18 @@
 <p class="grid-container2"><img height="100" width="100" style="text-align: right;" src="<%= img_url %>"></p>
 <h1 class="mt-4">Admin Dashboard</h1>
 <p class="lead mb-3">Welcome <%= user.name %> (ID# <%= user.id %>)</p>
-<div><a href="/auth/logout" class="btn btn-secondary git">Logout</a><a href="/admindashboard" class="btn btn-secondary git">Dashboard</a><a href="/revokeall" class="btn btn-secondary git">Revoke All</a></div>
+<div><a href="/auth/logout" class="btn btn-secondary git">Logout</a><a href="/admindashboard" class="btn btn-secondary git">Dashboard</a><a href="/revokeall" class="btn btn-secondary git">Revoke All</a>
+<% if (user.role == 'superadmin') {%>
+<a href="/superadmin" class="btn btn-secondary git">User Information</a>
+<% } %>
+
+</div>
 <p><br>Current active sessions:</p>
 <% console.log(sessions);for (i in sessions){ %>
     <p>SessionID: <%= i %><br>
         UserID: <%= sessions[i]['passport']['user'] %><br>
         Name: <% for (a in database){ if (database[a]['id'] == sessions[i]['passport']['user']){ %> <%= database[a]['name'] %> <% }} %><br>
-        Role: <% for (a in database){ if (database[a]['id'] == sessions[i]['passport']['user']){ if (database[a]['role'] == 'user'){ %> <span style="color: green"><%= database[a]['role'] %></span> <% }else{  %><span style="color: blue"><%= database[a]['role'] %></span><%}}} %>
+        Role: <% for (a in database){ if (database[a]['id'] == sessions[i]['passport']['user']){ if (database[a]['role'] == 'user'){ %> <span style="color: green"><%= database[a]['role'] %></span><% }elif (database[a]['role'] == 'superadmin'){ %> <span style="color: purple"><%= database[a]['role'] %></span><% }else{  %><span style="color: blue"><%= database[a]['role'] %></span><%}}} %>
         <% let revokelink = 'https://aidansproject.herokuapp.com/revoke?sid='+i%>
         <br>
         LoginMethod: <% for (a in database){ if (database[a]['id'] == sessions[i]['passport']['user']){ %> <%= database[a]['method'] %> <% }} %><br>

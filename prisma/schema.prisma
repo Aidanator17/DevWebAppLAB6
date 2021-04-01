@@ -15,7 +15,8 @@ model User {
   email     String @unique
   name      String 
   password  String @unique
-  method    String @default("user")
+  method    String @default("local")
+  role      String @default("user")
   imageURL  String 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")

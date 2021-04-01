@@ -1,44 +1,13 @@
 const express = require("express");
 const passport = require("../middleware/passport");
 const { forwardAuthenticated } = require("../middleware/checkAuth");
-const router = express.Router(); const { PrismaClient } = require('@prisma/client')
+const router = express.Router(); 
+const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
-const userModel = {
-  findOne: (email) => {
-    const user = database.find((user) => user.email === email);
-    if (user) {
-      return user;
-    }
-    throw new Error(`Couldn't find user with email: ${email}`);
-  },
-  findById: (id) => {
-    const user = database.find((user) => user.id === id);
-    if (user) {
-      return user;
-    }
-    throw new Error(`Couldn't find user with id: ${id}`);
-  },
-  OUTSIDEfindById: (id) => {
-    const user = database.find((user) => user.id === id);
-    if (user) {
-      return user;
-    }
-  },
-  createUserWithOutsideId: (u_id, u_name, u_url, u_method) => {
-    database.push(
-      {
-        id: u_id,
-        name: u_name,
-        email: null,
-        password: null,
-        role: 'admin',
-        method: u_method,
-        imageurl: u_url
-      }
-    )
-  }
-};
+
+
+
 
 //REGISTER
 router.post('/register', async (req, res) => {
@@ -60,9 +29,7 @@ router.post('/register', async (req, res) => {
 
 
 router.get("/register", (req, res) => {
-  
-    res.render('register');
-  
+  res.render('register');
 });
 
 //LOCAL
@@ -239,4 +206,4 @@ router.get('/instagram/callback',
     // Successful authentication, redirect home.
     res.redirect('/');
   });
-module.exports = router;
+module.exports = router

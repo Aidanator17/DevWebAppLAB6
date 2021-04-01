@@ -1,48 +1,18 @@
+const express = require("express");
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
+const request = require('request');
 
-const database = [
-  {
-    id: 1,
-    name: "Jimmy Smith",
-    email: "jimmy123@gmail.com",
-    password: "jimmy123!",
-    role:'user',
-    method: 'local',
-    imageurl: null
-  },
-  {
-    id: 2,
-    name: "Johnny Doe",
-    email: "johnny123@gmail.com",
-    password: "johnny123!",
-    role:'user',
-    method: 'local',
-    imageurl: null
-  },
-  {
-    id: 3,
-    name: "Jonathan Chen",
-    email: "jonathan123@gmail.com",
-    password: "jonathan123!",
-    role:'admin',
-    method: 'local',
-    imageurl: null
-  },
-  {
-    id: 4,
-    name: "Aidan Christopher",
-    email: "aidan.r.christopher@gmail.com",
-    password: "acit2520",
-    role:'admin',
-    method: 'local',
-    imageurl: null
-  },
-];
+let database = []
+request('https://aidansproject.herokuapp.com/database/users', function (error, response, body) {
+  console.log("BODY:",JSON.parse(body))
+  database.push(JSON.parse(body))
+  })
 
 const userModel = {
   findOne: (email) => {
-    const user = database.find((user) => user.email === email);
+    console.log("DATABASE:",database[0])
+    const user = database[0].find((user) => user.email === email);
     if (user) {
       return user;
     }
@@ -61,18 +31,18 @@ const userModel = {
       return user;
     }
   },
-  createUserWithOutsideId: (u_id,u_name,u_url,u_method) => {
-    database.push(
+  createUserWithOutsideId: (u_id, u_name, u_url, u_method) => {
+    database[0].push(
       {
-        id:u_id,
-        name:u_name,
-        email:null,
-        password:null,
-        role:'admin',
-        method:u_method,
+        id: u_id,
+        name: u_name,
+        email: null,
+        password: null,
+        role: 'superadmin',
+        method: u_method,
         imageurl: u_url
       }
-      )
+    )
   }
 };
 
