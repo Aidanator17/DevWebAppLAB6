@@ -32,17 +32,21 @@ const userModel = {
     }
   },
   createUserWithOutsideId: (u_id, u_name, u_url, u_method) => {
-    database[0].push(
-      {
-        id: u_id,
-        name: u_name,
-        email: null,
-        password: null,
-        role: 'superadmin',
-        method: u_method,
-        imageurl: u_url
-      }
-    )
+    let name = u_name
+    let email = 'null'
+    let password = 'null'
+    let method = u_method
+    let imageURL = u_url
+    let id = u_id
+    try {
+    const user = await prisma.user.create({
+      data: { id,name, email, password, imageURL, method }
+    });
+    res.redirect('/auth/login')
+  } catch (err) { 
+    return res.status(400).json(err)
+    
+  }
   }
 };
 
