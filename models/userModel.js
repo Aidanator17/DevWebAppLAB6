@@ -12,7 +12,7 @@ request(sites[0]+'/database/users', function (error, response, body) {
 const userModel = {
   findOne: (email) => {
     request(sites[0]+'/database/users', function (error, response, body) {
-  database[0].push(JSON.parse(body))
+  database[0] = JSON.parse(body)
 })
     console.log("DATABASE:",database)
     const user = database[0].find((user) => user.email === email);
@@ -23,7 +23,7 @@ const userModel = {
   },
   findById: (id) => {
     request(sites[0]+'/database/users', function (error, response, body) {
-  database[0].push(JSON.parse(body))
+  database[0] = JSON.parse(body)
 })
     const user = database[0].find((user) => user.id === id);
     if (user) {
@@ -33,7 +33,7 @@ const userModel = {
   },
   OUTSIDEfindById: (id) => {
     request(sites[0]+'/database/users', function (error, response, body) {
-  database[0].push(JSON.parse(body))
+  database[0] = JSON.parse(body)
 })
     const user = database[0].find((user) => user.id === id);
     if (user) {
