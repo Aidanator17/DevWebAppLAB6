@@ -31,7 +31,7 @@ const userModel = {
       return user;
     }
   },
-  createUserWithOutsideId: (u_id, u_name, u_url, u_method) => {
+  createUserWithOutsideId: async (u_id, u_name, u_url, u_method) => {
     let name = u_name
     let email = 'null'
     let password = 'null'
