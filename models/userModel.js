@@ -11,6 +11,9 @@ request(sites[0]+'/database/users', function (error, response, body) {
 
 const userModel = {
   findOne: (email) => {
+    request(sites[0]+'/database/users', function (error, response, body) {
+  database[0].push(JSON.parse(body))
+})
     console.log("DATABASE:",database)
     const user = database[0].find((user) => user.email === email);
     if (user) {
@@ -19,6 +22,9 @@ const userModel = {
     throw new Error(`Couldn't find user with email: ${email}`);
   },
   findById: (id) => {
+    request(sites[0]+'/database/users', function (error, response, body) {
+  database[0].push(JSON.parse(body))
+})
     const user = database[0].find((user) => user.id === id);
     if (user) {
       return user;
@@ -26,6 +32,9 @@ const userModel = {
     throw new Error(`Couldn't find user with id: ${id}`);
   },
   OUTSIDEfindById: (id) => {
+    request(sites[0]+'/database/users', function (error, response, body) {
+  database[0].push(JSON.parse(body))
+})
     const user = database[0].find((user) => user.id === id);
     if (user) {
       return user;
