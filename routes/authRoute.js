@@ -43,13 +43,17 @@ const userModel = {
 //REGISTER
 router.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
+  let imageURL = ''
   try {
     const user = await prisma.user.create({
-      data: {name, email, password}
+      data: { name, email, password, imageURL }
     });
+    console.log("!!!!!!!",user)
     return res.json(user);
   } catch (err) { 
+    console.log("!!!!!!!",err)
     return res.status(400).json(err)
+    
   }
 });
 
