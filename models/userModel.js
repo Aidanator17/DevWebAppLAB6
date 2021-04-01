@@ -4,7 +4,7 @@ const prisma = new PrismaClient()
 const request = require('request');
 let sites = ['https://aidansproject.herokuapp.com','http://localhost:8000']
 
-function getDatabase() => {
+function getDatabase() {
   let database = []
   request(sites[0]+'/database/users', function (error, response, body) {
     console.log("BODY:",JSON.parse(body))
