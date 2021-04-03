@@ -5,13 +5,13 @@ const request = require('request');
 let sites = ['https://aidansproject.herokuapp.com','http://localhost:8000']
 
 var database = []
-request(sites[1]+'/database/users', function (error, response, body) {
+request(sites[0]+'/database/users', function (error, response, body) {
   database.push(JSON.parse(body))
 })
 
 const userModel = {
   findOne: (email) => {
-    request(sites[1]+'/database/users', function (error, response, body) {
+    request(sites[0]+'/database/users', function (error, response, body) {
   database[0] = JSON.parse(body)
 })
     console.log("DATABASE:",database)
@@ -22,7 +22,7 @@ const userModel = {
     throw new Error(`Couldn't find user with email: ${email}`);
   },
   findById: (id) => {
-    request(sites[1]+'/database/users', function (error, response, body) {
+    request(sites[0]+'/database/users', function (error, response, body) {
   database[0] = JSON.parse(body)
 })
     const user = database[0].find((user) => user.id === id);
