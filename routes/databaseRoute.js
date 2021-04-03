@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("../middleware/passport");
-const { forwardAuthenticated } = require("../middleware/checkAuth");
+const { forwardAuthenticated, ensureAuthenticated } = require("../middleware/checkAuth");
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
@@ -15,7 +15,8 @@ router.get("/users", async (req,res) => {
           name: true,
           password: true,
           method: true,
-          role: true
+          role: true,
+          imageURL: true
         }
       })
       return res.json(users)

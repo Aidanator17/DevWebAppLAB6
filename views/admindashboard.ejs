@@ -9,7 +9,7 @@
         for (i in sessions){
             for (a in database){
                 if (database[a]['id'] == sessions[i]['passport']['user']){
-                    if (database[a]['role'] == 'admin'){
+                    if (database[a]['role'] == 'admin' || database[a]['role'] == 'superadmin'){
                     admins.push(database[a]['name'])}
                 }
             }

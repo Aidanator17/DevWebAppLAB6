@@ -26,7 +26,7 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
           user: req.user,
           sessions,
           database: database[0],
-          img_url: 'https://timesofindia.indiatimes.com/photo/67586673.cms',
+          img_url: req.user.imageURL,
           val: [false, null]
         });
       }
@@ -56,7 +56,7 @@ router.get("/admin", ensureAuthenticated, (req, res) => {
           user: req.user,
           sessions,
           database: database[0],
-          img_url: req.user.imageurl
+          img_url: req.user.imageURL
         });
       }
     });
@@ -75,12 +75,12 @@ router.get("/admindashboard", ensureAuthenticated, (req, res) => {
       if (error) {
         console.log(error);
       } else {
-        console.log(sessions);
+        console.log(req.user);
         res.render('admindashboard', {
           user: req.user,
           sessions,
-          database,
-          img_url: req.user.imageurl,
+          database: database[0],
+          img_url: req.user.imageURL,
           val: [false, null]
         });
       }
@@ -128,7 +128,7 @@ router.post("/valorant", (req, res) => {
                 user: req.user,
                 sessions,
                 database,
-                img_url: req.user.imageurl,
+                img_url: req.user.imageURL,
                 val: [true, JSON.parse(body)]
               })
             };
@@ -137,7 +137,7 @@ router.post("/valorant", (req, res) => {
                 user: req.user,
                 sessions,
                 database,
-                img_url: req.user.imageurl,
+                img_url: req.user.imageURL,
                 val: [true, JSON.parse(body)]
               });
             }
@@ -152,7 +152,7 @@ router.get("/superadmin", (req, res) => {
   res.render('superadmin', {
                 user: req.user,
                 database,
-                img_url: req.user.imageurl,
+                img_url: req.user.imageURL,
               });
 });
 
