@@ -14,6 +14,10 @@ router.get("/", (req, res) => {
   res.redirect('/dashboard');
 });
 
+router.get("//riot.txt", (req,res)=>{
+  res.redirect('https://drive.google.com/file/d/1dJVANAVkvewhPtMHqEB9O0vzLQYOJdu_/view?usp=sharing')
+})
+
 router.get("/dashboard", ensureAuthenticated, async (req, res) => {
   const store = req.sessionStore;
   if (req.user.role == 'user') {
