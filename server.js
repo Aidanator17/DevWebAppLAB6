@@ -51,7 +51,8 @@ app.use("/auth", authRoute);
 app.use("/database", databaseRoute)
 
 app.get("//riot.txt", (req,res)=>{
-  res.redirect('https://drive.google.com/file/d/1dJVANAVkvewhPtMHqEB9O0vzLQYOJdu_/view?usp=sharing')
+  const file = path.join(__dirname,  "riot.txt");
+  res.download(file) 
 })
 
 
